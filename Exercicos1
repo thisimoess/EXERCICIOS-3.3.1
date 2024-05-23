@@ -1,0 +1,172 @@
+#include <stdio.h>
+
+// Exercício 1
+void exercicio1() {
+    printf("Exercício 1:\n");
+    for (int i = 1; i <= 10; i++) {
+        printf("%d ", i);
+    }
+    printf("\n");
+}
+
+// Exercício 2
+void exercicio2() {
+    printf("Exercício 2:\n");
+    for (int i = 10; i >= 1; i--) {
+        printf("%d ", i);
+    }
+    printf("\n");
+}
+
+// Exercício 3
+void exercicio3() {
+    printf("Exercício 3:\n");
+    int idade, maiores = 0;
+    for (int i = 0; i < 5; i++) {
+        printf("Digite a idade da pessoa %d: ", i + 1);
+        scanf("%d", &idade);
+        if (idade > 18) {
+            maiores++;
+        }
+    }
+    printf("Quantidade de pessoas maiores que 18 anos: %d\n", maiores);
+}
+
+// Exercício 4
+void exercicio4() {
+    printf("Exercício 4:\n");
+    int num;
+    printf("Digite um número entre 1 e 10: ");
+    scanf("%d", &num);
+    while (num < 1 || num > 10) {
+        printf("Número inválido. Digite novamente: ");
+        scanf("%d", &num);
+    }
+    int i = 1;
+    while (i <= 10) {
+        printf("%d X %d = %d\n", num, i, num * i);
+        i++;
+    }
+}
+
+// Exercício 5
+void exercicio5() {
+    printf("Exercício 5:\n");
+    char *meses[12] = {"janeiro", "fevereiro", "março", "abril", "maio", "junho",
+                       "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"};
+    int num;
+    printf("Digite um número entre 1 e 12: ");
+    scanf("%d", &num);
+    while (num < 1 || num > 12) {
+        printf("Valor inválido. Digite novamente: ");
+        scanf("%d", &num);
+    }
+    printf("%d- %s\n", num, meses[num - 1]);
+}
+
+// Exercício 6
+void exercicio6() {
+    printf("Exercício 6:\n");
+    int senhaCorreta = 1234;
+    int senha;
+    do {
+        printf("Digite a senha (4 dígitos): ");
+        scanf("%d", &senha);
+        if (senha != senhaCorreta) {
+            printf("Senha Incorreta\n");
+        }
+    } while (senha != senhaCorreta);
+    printf("Senha Correta\n");
+}
+
+// Exercício 7
+int fatorial(int n) {
+    if (n == 0 || n == 1) {
+        return 1;
+    } else {
+        return n * fatorial(n - 1);
+    }
+}
+
+void exercicio7() {
+    printf("Exercício 7:\n");
+    int num;
+    printf("Digite um número para calcular o fatorial: ");
+    scanf("%d", &num);
+    printf("Fatorial de %d: %d\n", num, fatorial(num));
+}
+
+// Exercício 8
+void exercicio8() {
+    printf("Exercício 8:\n");
+    int alunos, peso, total = 0;
+    float media;
+    printf("Quantos alunos você tem na academia? ");
+    scanf("%d", &alunos);
+    int i = 1;
+    while (i <= alunos) {
+        printf("Digite o peso do aluno %d: ", i);
+        scanf("%d", &peso);
+        total += peso;
+        i++;
+    }
+    media = (float)total / alunos;
+    printf("A média de peso dos alunos é: %.2f\n", media);
+}
+
+// Exercício 9
+void exercicio9() {
+    printf("Exercício 9:\n");
+    int opcao;
+    float saldo = 0, valor;
+
+    do {
+        printf("\nMenu de opções\n");
+        printf("1- Consulta\n");
+        printf("2- Saque\n");
+        printf("3- Depósito\n");
+        printf("4- Sair\n");
+        printf("Digite sua opção: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                printf("Seu saldo é: %.2f\n", saldo);
+                break;
+            case 2:
+                printf("Digite o valor do saque: ");
+                scanf("%f", &valor);
+                if (valor > saldo) {
+                    printf("Saldo insuficiente.\n");
+                } else {
+                    saldo -= valor;
+                    printf("Saque realizado com sucesso.\n");
+                }
+                break;
+            case 3:
+                printf("Digite o valor do depósito: ");
+                scanf("%f", &valor);
+                saldo += valor;
+                printf("Depósito realizado com sucesso.\n");
+                break;
+            case 4:
+                printf("Encerrando o programa.\n");
+                break;
+            default:
+                printf("Opção inválida. Tente novamente.\n");
+        }
+    } while (opcao != 4);
+}
+
+int main() {
+    exercicio1();
+    exercicio2();
+    exercicio3();
+    exercicio4();
+    exercicio5();
+    exercicio6();
+    exercicio7();
+    exercicio8();
+    exercicio9();
+    return 0;
+}
